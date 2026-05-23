@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNILAG POSTUTME PREP SOFTWARE</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg p-3 text-bg-dark">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="#">
+            <span class="logo-text text-white fw-bold"
+              >Master<span class="logo-highlight" style="color: #f8c22c"
+                >CBT</span
+              ></span
+            >
+          </a>
+
+          <!-- Hamburger -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Nav links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul
+              class="navbar-nav me-auto mb-2 mb-lg-0 ms-4 align-items-lg-center"
+            >
+              <li class="nav-item">
+                <a
+                  href="../dashboardcont/dashboard2.html"
+                  class="nav-link text-white"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#features" class="nav-link text-white">Features</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="#pricing"
+                  class="btn btn-outline-warning btn-sm ms-lg-2 fw-bold"
+                  >Activate</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-white">About us</a>
+              </li>
+            </ul>
+
+            <!-- Auth buttons -->
+            <div
+              id="authHeaderArea"
+              class="d-flex align-items-center gap-3 mt-2 mt-lg-0"
+            >
+              <!-- Logged out -->
+              <div id="loggedOutLinks" class="d-flex gap-2">
+                <button
+                  onclick="
+                    window.location.href =
+                      '../register-page/login.html?mode=login'
+                  "
+                  type="button"
+                  class="btn btn-outline-light"
+                >
+                  Login
+                </button>
+                <button
+                  onclick="
+                    window.location.href =
+                      '../register-page/login.html?mode=register'
+                  "
+                  type="button"
+                  class="btn btn-warning fw-bold"
+                >
+                  Sign-up
+                </button>
+              </div>
+
+              <!-- Logged in -->
+              <div
+                id="loggedInState"
+                class="align-items-center gap-3"
+                style="display: none !important"
+              >
+                <span
+                  class="text-white fw-bold d-none d-lg-inline"
+                  id="navWelcomeName"
+                  style="color: #f8c22c !important; font-size: 0.95rem"
+                ></span>
+                <div class="dropdown">
+                  <a
+                    href="#"
+                    class="text-white dropdown-toggle"
+                    id="settingsDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      text-decoration: none;
+                    "
+                  >
+                    <i
+                      class="fa-solid fa-gear"
+                      style="font-size: 1.3rem; color: #f8c22c"
+                    ></i>
+                  </a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-dark p-2 mt-2"
+                    style="
+                      min-width: 230px;
+                      border: 1px solid #444;
+                      background-color: #1e1e1e;
+                    "
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item py-2 rounded d-flex align-items-center gap-2"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editProfileModal"
+                      >
+                        <i class="fa-solid fa-user-gear text-warning"></i> User
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2 rounded d-flex align-items-center gap-2"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#resetPasswordModal"
+                      >
+                        <i class="fa-solid fa-key text-warning"></i> Reset
+                        Password
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2 rounded d-flex align-items-center gap-2"
+                        href="#pricing"
+                      >
+                        <i
+                          class="fa-solid fa-circle-dollar-to-slot text-warning"
+                        ></i>
+                        Activate Account
+                      </a>
+                    </li>
+                    <hr class="dropdown-divider border-secondary my-2" />
+                    <li>
+                      <a
+                        class="dropdown-item py-2 rounded text-danger d-flex align-items-center gap-2"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#logoutConfirmationModal"
+                      >
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Heroes -->
+    <section class="heroes">
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <!-- Exam card -->
+          <div class="col-10 col-sm-8 col-lg-6">
+            <div class="exam-card">
+              <div class="exam-card-header">
+                <span>🎯 Practice Test</span>
+                <span class="exam-badge">UNILAG 2024</span>
+              </div>
+              <div class="exam-card-body">
+                <p class="exam-question">
+                  Which of the following is a product of photosynthesis?
+                </p>
+                <div class="exam-options">
+                  <div class="option">A. Carbon dioxide</div>
+                  <div class="option correct">B. Glucose ✓</div>
+                  <div class="option">C. Nitrogen</div>
+                  <div class="option">D. Water</div>
+                </div>
+              </div>
+              <div class="exam-card-footer">
+                <span>Question 1 of 40</span>
+                <button
+                  onclick="
+                    window.location.href =
+                      '../register-page/login.html?mode=register'
+                  "
+                  type="button"
+                  class="btn-next"
+                >
+                  Next →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero text -->
+          <div class="col-lg-6">
+            <!-- Welcome message (shown when logged in) -->
+            <div
+              id="heroWelcomeMsg"
+              style="
+                color: #f8c22c;
+                font-size: 1.8rem;
+                font-weight: 800;
+                margin-bottom: 14px;
+                display: none;
+              "
+            ></div>
+
+            <!-- Badge (shown when logged out) -->
+            <div id="defaultPillBadgeWrapper">
+              <span class="badge-pill"
+                >#1 UNILAG Post-UTME Practice Platform</span
+              >
+            </div>
+
+            <h1 class="display-5 fw-bold lh-1 mb-3 h1 mt-2">MASTER-CLASS</h1>
+            <h2 class="head">UNILAG POST-UTME SOFTWARE</h2>
+            <h3 class="h2">Practice for your POST-UTME with confidence</h3>
+            <p class="lead">
+              Practice with the ultimate computer-based testing software
+              designed strictly around UNILAG's exam pattern.
+            </p>
+
+            <!-- Buttons -->
+            <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
+              <button
+                onclick="
+                  window.location.href =
+                    '../register-page/login.html?mode=register'
+                "
+                type="button"
+                class="btn btn-warning btn-lg px-4 me-md-2 fw-bold"
+              >
+                Get Started
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4"
+              >
+                Learn more
+              </button>
+            </div>-->
+
+            <!-- Stats bar -->
+            <div class="stats-bar">
+              <div class="stat-item">
+                <span class="stat-number">2026</span>
+                <span class="stat-label">Updated Questions</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">UNILAG Focused</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Free</span>
+                <span class="stat-label">To Start</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">CBT</span>
+                <span class="stat-label">Real Exam Format</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="features-header">
+          <span class="features-badge">Why Choose Us</span>
+          <h2>Everything You Need to Pass</h2>
+          <p>Built strictly around UNILAG's Post-UTME exam pattern</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Practice Questions</h3>
+            <p>
+              Hundreds of past UNILAG Post-UTME questions organized by subject
+              and year to help you prepare effectively.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>CBT Mode</h3>
+            <p>
+              Practice in a real computer-based test environment exactly like
+              the UNILAG exam hall — no surprises on exam day.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Performance Analytics</h3>
+            <p>
+              Track your performance after every practice session and see
+              exactly where you need to improve.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Current Affairs</h3>
+            <p>
+              Stay updated with current affairs questions relevant to UNILAG's
+              Post-UTME exam requirements.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Study Notes</h3>
+            <p>
+              Access clear and concise study notes for every subject to
+              strengthen your understanding before exam day.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧮</div>
+            <h3>Aggregate Calculator</h3>
+            <p>
+              Calculate your UNILAG admission aggregate score using your JAMB
+              score, Post-UTME score and O'level results instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="how-header">
+          <span class="how-badge">Simple Process</span>
+          <h2>Get Started in 3 Easy Steps</h2>
+          <p>Be ready for your UNILAG Post-UTME in minutes</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">📝</div>
+            <h3>Create Free Account</h3>
+            <p>
+              Sign up in seconds with just your name and email — no payment
+              required to get started.
+            </p>
+          </div>
+          <div class="step-divider">→</div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">💻</div>
+            <h3>Start Practicing</h3>
+            <p>
+              Choose your subject, enter CBT mode and start answering real
+              UNILAG Post-UTME questions.
+            </p>
+          </div>
+          <div class="step-divider">→</div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">🏆</div>
+            <h3>Track & Pass</h3>
+            <p>
+              Check your score after every session, identify weak areas and walk
+              into your exam with confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section
+      id="pricing"
+      style="padding: 60px 0; background-color: rgba(255, 255, 255, 0.02)"
+    >
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            style="
+              background: #f0c040;
+              color: #000;
+              font-size: 0.85rem;
+              font-weight: 700;
+              padding: 6px 16px;
+              border-radius: 50px;
+              display: inline-block;
+              margin-bottom: 1rem;
+            "
+            >Simple Pricing</span
+          >
+          <h2
+            style="
+              color: #ffffff;
+              font-size: 2.5rem;
+              font-weight: 800;
+              margin-bottom: 1rem;
+            "
+          >
+            Choose Your Plan
+          </h2>
+          <p style="color: #aaaaaa; font-size: 1.1rem">
+            Start free, upgrade when you're ready
+          </p>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+          "
+        >
+          <div class="pricing-card">
+            <div class="plan-name">Free</div>
+            <div class="plan-price">₦0<span>/forever</span></div>
+            <p class="plan-desc">Perfect for getting started</p>
+            <ul class="plan-features">
+              <li>✅ 20 Practice Questions</li>
+              <li>✅ CBT Mode</li>
+              <li>✅ Basic Score Tracker</li>
+              <li>✅ Current Affairs</li>
+              <li>❌ Full Question Bank</li>
+              <li>❌ Study Notes</li>
+              <li>❌ Aggregate Calculator</li>
+            </ul>
+            <a
+              href="../register-page/login.html?mode=register"
+              class="plan-btn plan-btn-free"
+              >Get Started Free</a
+            >
+          </div>
+
+          <div class="pricing-card">
+            <div class="plan-name">Per Subject</div>
+            <div class="plan-price">₦500<span>/subject/month</span></div>
+            <p class="plan-desc">Pay only for what you need</p>
+            <ul class="plan-features">
+              <li>✅ Unlimited Practice Questions</li>
+              <li>✅ CBT Mode</li>
+              <li>✅ Score Tracker</li>
+              <li>✅ Current Affairs</li>
+              <li>✅ Full Question Bank</li>
+              <li>❌ Study Notes</li>
+              <li>❌ Aggregate Calculator</li>
+            </ul>
+            <a
+              href="../register-page/login.html?mode=register"
+              class="plan-btn plan-btn-free"
+              >Get Started</a
+            >
+          </div>
+
+          <div class="pricing-card pricing-card-popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="plan-name">Premium</div>
+            <div class="plan-price">₦2,000<span>/month</span></div>
+            <p class="plan-desc">Everything you need to pass</p>
+            <ul class="plan-features">
+              <li>✅ Unlimited Practice Questions</li>
+              <li>✅ CBT Mode</li>
+              <li>✅ Advanced Score Tracker</li>
+              <li>✅ Current Affairs</li>
+              <li>✅ Full Question Bank</li>
+              <li>✅ Study Notes</li>
+              <li>✅ Aggregate Calculator</li>
+            </ul>
+            <a
+              href="../register-page/login.html?mode=register"
+              class="plan-btn plan-btn-premium"
+              >Get Premium</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3>Master<span class="footer-highlight">CBT</span></h3>
+            <p>
+              The #1 UNILAG Post-UTME practice platform built strictly around
+              UNILAG's exam pattern.
+            </p>
+            <div class="footer-socials">
+              <a href="#">📘</a>
+              <a href="#">📸</a>
+              <a href="#">🐦</a>
+              <a href="#">💬</a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Resources</h4>
+            <ul>
+              <li><a href="#">Practice Questions</a></li>
+              <li><a href="#">CBT Mode</a></li>
+              <li><a href="#">Study Notes</a></li>
+              <li><a href="#">Current Affairs</a></li>
+              <li><a href="#">Score Tracker</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>📧 support@mastercbt.com</li>
+              <li>📱 +234 800 000 0000</li>
+              <li>📍 Lagos, Nigeria</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 MasterCBT. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Edit Profile Modal -->
+    <div
+      class="modal fade"
+      id="editProfileModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content bg-dark text-white"
+          style="border: 1px solid #444"
+        >
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title fw-bold">
+              <i class="fa-solid fa-user-gear text-warning me-2"></i>My Profile
+              Info
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editProfileForm">
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <label class="form-label text-secondary small fw-bold"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                    id="profileFirstName"
+                    required
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-secondary small fw-bold"
+                    >Surname</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                    id="profileSurname"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-secondary small fw-bold"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                  id="profileEmail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-secondary small fw-bold"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                  id="profilePhone"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-warning w-100 fw-bold mt-2 text-dark"
+              >
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div
+      class="modal fade"
+      id="resetPasswordModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content bg-dark text-white"
+          style="border: 1px solid #444"
+        >
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title fw-bold">
+              <i class="fa-solid fa-key text-warning me-2"></i>Reset Password
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="resetPasswordForm">
+              <div class="mb-3">
+                <label class="form-label text-secondary fw-semibold"
+                  >Current Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-secondary fw-semibold"
+                  >New Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control bg-secondary bg-opacity-10 text-white border-secondary"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-outline-warning w-100 fw-bold mt-2"
+              >
+                Update Password
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="logoutConfirmationModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div
+          class="modal-content bg-dark text-white text-center"
+          style="border: 1px solid #444; border-radius: 12px"
+        >
+          <div class="modal-body py-4">
+            <i
+              class="fa-solid fa-circle-question text-danger mb-3"
+              style="font-size: 2.5rem"
+            ></i>
+            <h5 class="fw-bold mb-2">Are you sure?</h5>
+            <p class="text-secondary small mb-4">
+              You will be logged out of your session immediately.
+            </p>
+            <div class="d-flex gap-2 justify-content-center">
+              <button
+                type="button"
+                class="btn btn-sm btn-secondary fw-bold px-3"
+                data-bs-dismiss="modal"
+              >
+                No, Stay
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-danger fw-bold px-3"
+                onclick="confirmSystemLogoutAndReload()"
+              >
+                Yes, Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Check login state
+      function evaluateHeaderAuthenticationState() {
+        const heroMsg = document.getElementById("heroWelcomeMsg");
+        const pillBadge = document.getElementById("defaultPillBadgeWrapper");
+        const loggedOutContainer = document.getElementById("loggedOutLinks");
+        const loggedInContainer = document.getElementById("loggedInState");
+        const navWelcomeName = document.getElementById("navWelcomeName");
+
+        const storedUserSession = localStorage.getItem("masterCbtUser");
+        const isAuthenticated =
+          storedUserSession &&
+          storedUserSession.trim() !== "" &&
+          storedUserSession !== "Student";
+
+        if (isAuthenticated) {
+          if (loggedOutContainer)
+            loggedOutContainer.style.setProperty(
+              "display",
+              "none",
+              "important",
+            );
+          if (loggedInContainer)
+            loggedInContainer.style.setProperty("display", "flex", "important");
+          if (navWelcomeName)
+            navWelcomeName.textContent = `👋 ${storedUserSession}`;
+          if (pillBadge) pillBadge.style.display = "none";
+          if (heroMsg) {
+            heroMsg.innerText = `Welcome, ${storedUserSession}! 👋`;
+            heroMsg.style.display = "block";
+          }
+        } else {
+          if (loggedOutContainer)
+            loggedOutContainer.style.setProperty(
+              "display",
+              "flex",
+              "important",
+            );
+          if (loggedInContainer)
+            loggedInContainer.style.setProperty("display", "none", "important");
+          if (pillBadge) pillBadge.style.display = "block";
+          if (heroMsg) heroMsg.style.display = "none";
+        }
+      }
+
+      function confirmSystemLogoutAndReload() {
+        localStorage.removeItem("masterCbtUser");
+        localStorage.removeItem("masterCbtUserProfile");
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("logoutConfirmationModal"),
+        );
+        if (modal) modal.hide();
+        window.location.reload();
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        evaluateHeaderAuthenticationState,
+      );
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
